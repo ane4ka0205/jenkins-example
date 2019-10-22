@@ -11,18 +11,15 @@ node('slaves'){
     stage('Command'){
         sh 'env'
     }
-    
+    stage('Compile'){
+        sh "${root}/bin/go build"
+    }    
     stage('Version'){
       withEnv(["GOPATH=${env.WORKSPACE}/go", "GOROOT=${root}", "GOBIN=${root}/bin", "PATH+GO=${root}/bin"]) {
         sh "mkdir -p ${env.WORKSPACE}/go/src"
-        sh 'ls -l $HOME/workspace/example-lambda_master'
-        sh 'env ${GOPATH}'
-        sh 'env ${GOROOT}'
         sh 'go version'
+        sh "go get github.com/golang/lint/golint"
 	}
-    }
-    stage('File'){
-        sh 'echo "machine https://github.com login ane4ka0205 password vfkfyjdf0205 > $HOME/.netrc"'
     }
 
     stage('Build'){
