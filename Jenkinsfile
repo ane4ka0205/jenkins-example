@@ -2,15 +2,13 @@ def bucket = 'us-east-1-lambda-example'
 def functionName = 'lambda-example'
 def region = 'us-east-1'
 
-node{
+node('slaves'){
     stage('Checkout'){
         checkout scm
     }
 
     stage('Test'){
-        sh 'go get -u github.com/golang/lint/golint'
-        sh 'go get -t ./...'
-        //sh 'golint -set_exit_status'
+        sh 'go fmt .'
         sh 'go vet .'
         sh 'go test .'
     }
