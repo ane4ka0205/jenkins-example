@@ -3,7 +3,7 @@ def functionName = 'lambda-example'
 def region = 'us-east-1'
 
 node('slaves'){
-   def root = tool name: 'Go 1.13', type: 'go'
+   def jenkins = tool name: 'Go 1.13', type: 'go'
     stage('Checkout'){
         checkout scm
     }
@@ -13,7 +13,7 @@ node('slaves'){
     }
     
     stage('Version'){
-      withEnv(["GOROOT=${root}", "PATH+GO=${root}/bin"]) {
+      withEnv(["GOROOT=${jenkins}", "PATH+GO=${jenkins}/usr/bin"]) {
         sh 'go version'
 	}
     }
