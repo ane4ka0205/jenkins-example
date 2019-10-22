@@ -16,7 +16,6 @@ node('slaves'){
         sh "go get -u golang.org/x/lint/golint"
         sh 'go vet .'
         sh 'go test .'
-	}
     }
 
     stage('Build'){
