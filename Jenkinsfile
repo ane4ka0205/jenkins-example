@@ -13,7 +13,8 @@ node('slaves'){
     }
     
     stage('Version'){
-      withEnv(["GOROOT=${root}", "PATH+GO=${root}/bin"]) {
+      withEnv(["GOPATH=${env.WORKSPACE}/go", "GOROOT=${root}", "GOBIN=${root}/bin", "PATH+GO=${root}/bin"]) {
+        sh "mkdir -p ${env.WORKSPACE}/go/src"
         sh 'go version'
 	}
     }
