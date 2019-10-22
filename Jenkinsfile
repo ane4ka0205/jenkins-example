@@ -1,6 +1,6 @@
-def bucket = 'deployment-packages-mlabouardy'
-def functionName = 'Fibonacci'
-def region = 'eu-west-3'
+def bucket = 'us-east-1-lambda-example'
+def functionName = 'lambda-example'
+def region = 'us-east-1'
 
 node{
     stage('Checkout'){
