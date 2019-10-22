@@ -3,7 +3,6 @@ def functionName = 'lambda-example'
 def region = 'us-east-1'
 
 node('slaves'){
-   def root = tool name: 'Go 1.13', type: 'go'
     stage('Checkout'){
         checkout scm
     }
@@ -13,7 +12,6 @@ node('slaves'){
     }
 
     stage('Version'){
-      withEnv(["GOPATH=${env.WORKSPACE}/go", "GOROOT=${root}", "GOBIN=${root}/bin", "PATH+GO=${root}/bin"]) {
         sh 'go version'
         sh "go get -u golang.org/x/lint/golint"
         sh 'go vet .'
