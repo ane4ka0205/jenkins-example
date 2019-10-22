@@ -16,7 +16,7 @@ node('slaves'){
       withEnv(["GOPATH=${env.WORKSPACE}/go", "GOROOT=${root}", "GOBIN=${root}/bin", "PATH+GO=${root}/bin"]) {
         sh "mkdir -p ${env.WORKSPACE}/go/src"
         sh 'go version'
-        sh "go get -u github.com/golang/lint/golint"
+        sh "go get -u golang.org/x/lint/golint"
 	}
     }
 
