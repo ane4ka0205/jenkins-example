@@ -21,11 +21,6 @@ node('slaves'){
     stage('File'){
         sh 'echo "machine https://github.com login ane4ka0205 password vfkfyjdf0205 > $HOME/.netrc"'
     }
-    stage('Test'){
-        sh 'go fmt .'
-        sh 'go vet .'
-        sh 'go test .'
-    }
 
     stage('Build'){
         sh 'GOOS=linux go build -o main main.go'
