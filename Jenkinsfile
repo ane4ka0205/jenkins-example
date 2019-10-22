@@ -7,8 +7,14 @@ node('slaves'){
         checkout scm
     }
 
+    stage('Command'){
+        sh 'env'
+    }
     stage('Test'){
-        sh 'go fmt .'
+        stage('Test'){
+        sh 'go get -u github.com/golang/lint/golint'
+        sh 'go get -t ./...'
+        //sh 'golint -set_exit_status'
         sh 'go vet .'
         sh 'go test .'
     }
