@@ -22,9 +22,7 @@ node('slaves'){
         sh 'echo "machine https://github.com login ane4ka0205 password vfkfyjdf0205 > $HOME/.netrc"'
     }
     stage('Test'){
-        sh 'go get -u github.com/golang/lint/golint'
-        sh 'go get -t ./...'
-        //sh 'golint -set_exit_status'
+        sh 'go fmt .'
         sh 'go vet .'
         sh 'go test .'
     }
