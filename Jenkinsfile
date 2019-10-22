@@ -3,12 +3,6 @@ def functionName = 'Fibonacci'
 def region = 'eu-west-3'
 
 node{
-    tools {
-        go 'go-1.13'
-}
-    environment {
-        GO111MODULE = 'on'
-}
     stage('Checkout'){
         checkout scm
     }
