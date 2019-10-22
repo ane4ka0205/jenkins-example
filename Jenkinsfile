@@ -10,6 +10,10 @@ node('slaves'){
     stage('Command'){
         sh 'env'
     }
+    
+    stage('Version'){
+        sh 'go version'
+    }
     stage('Test'){
         sh 'go get -u github.com/golang/lint/golint'
         sh 'go get -t ./...'
