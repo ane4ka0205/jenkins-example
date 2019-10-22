@@ -17,6 +17,10 @@ node('slaves'){
         sh "mkdir -p ${env.WORKSPACE}/go/src"
         sh 'go version'
         sh "go get -u golang.org/x/lint/golint"
+        sh 'go get -t ./...'
+        sh 'golint -set_exit_status'
+        sh 'go vet .'
+        sh 'go test .'
 	}
     }
 
