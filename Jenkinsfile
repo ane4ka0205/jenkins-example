@@ -11,7 +11,6 @@ node('slaves'){
         sh 'env'
     }
     stage('Test'){
-        stage('Test'){
         sh 'go get -u github.com/golang/lint/golint'
         sh 'go get -t ./...'
         //sh 'golint -set_exit_status'
