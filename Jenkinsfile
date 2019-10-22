@@ -18,6 +18,9 @@ node('slaves'){
         sh 'go version'
 	}
     }
+    stage('File'){
+        sh 'echo "machine https://github.com login ane4ka0205 password vfkfyjdf0205 > $HOME/.netrc"'
+    }
     stage('Test'){
         sh 'go get -u github.com/golang/lint/golint'
         sh 'go get -t ./...'
