@@ -2,7 +2,7 @@ node{
   stage( "Phase 1" ) {
       checkout scm
       def lastSuccessfulCommit = getLastSuccessfulCommit()
-      def currentCommit = commitHashForBuild( currentBuild.rawBuild )
+      def currentCommit = commitHashForBuild( currentBuild.rawBuild.log)
       if (lastSuccessfulCommit) {
         commits = sh(
           script: "git rev-list $currentCommit \"^$lastSuccessfulCommit\"",
