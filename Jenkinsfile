@@ -65,7 +65,7 @@
 //     return log;
 // }
 
-@Library('jenkins_example')_
+@Library('jenkins-example')_
 
 stage ('Demo') {
     echo 'Hello world'
